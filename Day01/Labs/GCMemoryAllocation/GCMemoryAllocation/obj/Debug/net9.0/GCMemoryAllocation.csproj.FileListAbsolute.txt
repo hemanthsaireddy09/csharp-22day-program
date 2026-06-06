@@ -1,0 +1,14 @@
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\bin\Debug\net9.0\GCMemoryAllocation.exe
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\bin\Debug\net9.0\GCMemoryAllocation.deps.json
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\bin\Debug\net9.0\GCMemoryAllocation.runtimeconfig.json
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\bin\Debug\net9.0\GCMemoryAllocation.dll
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\bin\Debug\net9.0\GCMemoryAllocation.pdb
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.GeneratedMSBuildEditorConfig.editorconfig
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.AssemblyInfoInputs.cache
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.AssemblyInfo.cs
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.csproj.CoreCompileInputs.cache
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.dll
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\refint\GCMemoryAllocation.dll
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.pdb
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\GCMemoryAllocation.genruntimeconfig.cache
+C:\hemanth\GCMemoryAllocation\GCMemoryAllocation\obj\Debug\net9.0\ref\GCMemoryAllocation.dll

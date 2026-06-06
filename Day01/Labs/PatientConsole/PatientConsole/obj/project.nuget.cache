@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "UYrpkz/uIiE=",
+  "success": true,
+  "projectFilePath": "C:\\hemanth\\HcaDay1\\PatientConsole\\PatientConsole.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\bogus\\35.6.5\\bogus.35.6.5.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
