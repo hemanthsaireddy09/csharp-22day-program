@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\hemanth\\GCMemoryAllocation\\",
+  "WorkspaceRootPath": "C:\\hemanth\\csharp-22day-program\\Day01\\Labs\\GCMemoryAllocation\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B20AB92-B560-4148-91AD-E9A00348235E}|GCMemoryAllocation\\GCMemoryAllocation.csproj|c:\\hemanth\\gcmemoryallocation\\gcmemoryallocation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B20AB92-B560-4148-91AD-E9A00348235E}|GCMemoryAllocation\\GCMemoryAllocation.csproj|solutionrelative:gcmemoryallocation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\hemanth\\csharp-22day-program\\Day01\\Labs\\GCMemoryAllocation\\GCMemoryAllocation\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:GCMemoryAllocation\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,21 +14,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\hemanth\\GCMemoryAllocation\\GCMemoryAllocation\\Program.cs",
+              "DocumentMoniker": "C:\\hemanth\\csharp-22day-program\\Day01\\Labs\\GCMemoryAllocation\\GCMemoryAllocation\\Program.cs",
               "RelativeDocumentMoniker": "GCMemoryAllocation\\Program.cs",
-              "ToolTip": "C:\\hemanth\\GCMemoryAllocation\\GCMemoryAllocation\\Program.cs",
+              "ToolTip": "C:\\hemanth\\csharp-22day-program\\Day01\\Labs\\GCMemoryAllocation\\GCMemoryAllocation\\Program.cs",
               "RelativeToolTip": "GCMemoryAllocation\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-03T09:03:14.843Z",
               "EditorCaption": ""
