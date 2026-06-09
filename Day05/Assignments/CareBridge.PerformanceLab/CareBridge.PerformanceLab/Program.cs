@@ -18,7 +18,9 @@ while (true)
     Console.WriteLine("5. Explicit Loading Demo");
     Console.WriteLine("6. AsNoTracking Demo");
     Console.WriteLine("7. Revenue At Risk Dashboard");
-    Console.WriteLine("8. Exit");
+    Console.WriteLine("8.Cartesian Explosion Demo and AsSplitQuery()");
+
+    Console.WriteLine("9. Exit");
     Console.WriteLine();
     Console.Write("Choose Option: ");
 
@@ -55,6 +57,9 @@ while (true)
             break;
 
         case "8":
+            CartesianExplosionDemo();
+            break;
+        case "9":
             return;
 
         default:
@@ -473,4 +478,52 @@ static void RevenueAtRiskDashboard()
     Console.WriteLine($"Tracked Entities           : {db.ChangeTracker.Entries().Count()}");
     Console.WriteLine("SQL Statements (Profiler)  : 2"); 
     Console.WriteLine($"Elapsed Time               : {stopwatch.ElapsedMilliseconds} ms");
+}
+static void CartesianExplosionDemo()
+{
+    using var db = new CareBridgeContext();
+    Console.WriteLine();
+    Console.WriteLine("CARTESIAN EXPLOSION DEMO");
+    Console.WriteLine("----------------------------");
+    Stopwatch stopwatch = Stopwatch.StartNew();
+    var patientsWithEncountersAndClaims =
+        db.Patients
+          .Include(p => p.Encounters)
+          .ThenInclude(e => e.Claims)
+          .ToList();
+    stopwatch.Stop();
+    int patientCount = patientsWithEncountersAndClaims.Count;
+    int encounterCount = patientsWithEncountersAndClaims.SelectMany(p => p.Encounters).Count();
+    int claimCount = patientsWithEncountersAndClaims.SelectMany(p => p.Encounters).SelectMany(e => e.Claims).Count();
+    Console.WriteLine();
+    Console.WriteLine($"Patients Loaded   : {patientCount}");
+    Console.WriteLine($"Encounters Loaded : {encounterCount}");
+    Console.WriteLine($"Claims Loaded     : {claimCount}");
+    Console.WriteLine();
+    Console.WriteLine("PERFORMANCE SUMMARY");
+    Console.WriteLine("----------------------------");
+    Console.WriteLine("SQL Statements (Profiler) : 3");
+    Console.WriteLine();
+    Console.WriteLine($"Elapsed Time: {stopwatch.ElapsedMilliseconds} ms");
+    Console.WriteLine("----------------------------");
+    Console.WriteLine("With AsSplitQuery()");
+    stopwatch.Restart();
+    var patientsWithEncountersAndClaimsSplit =
+        db.Patients
+          .Include(p => p.Encounters)
+          .ThenInclude(e => e.Claims)
+          .AsSplitQuery()
+          .ToList();
+    stopwatch.Stop();
+    Console.WriteLine();
+    Console.WriteLine($"Patients Loaded   : {patientsWithEncountersAndClaimsSplit.Count}");
+    Console.WriteLine($"Encounters Loaded : {patientsWithEncountersAndClaimsSplit.SelectMany(p => p.Encounters).Count()}");
+    Console.WriteLine($"Claims Loaded     : {patientsWithEncountersAndClaimsSplit.SelectMany(p => p.Encounters).SelectMany(e => e.Claims).Count()}");
+    Console.WriteLine();
+    Console.WriteLine("PERFORMANCE SUMMARY");
+    Console.WriteLine("----------------------------");
+    Console.WriteLine("SQL Statements (Profiler) : 5");
+    Console.WriteLine();
+    Console.WriteLine($"Elapsed Time: {stopwatch.ElapsedMilliseconds} ms");
+
 }
