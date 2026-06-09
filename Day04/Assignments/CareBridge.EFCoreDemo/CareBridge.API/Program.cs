@@ -75,5 +75,24 @@ app.MapGet("/api/cities",
                  .Distinct()
                  .ToList();
     });
+app.MapGet("/api/analytics/department-load",
+    async (CareBridgeScaffoldContext db) =>
+    {
+        var data = await db.Encounters
+            .Include(e => e.Department)
+            .GroupBy(e => e.Department.Name)
+            .Select(g => new
+            {
+                DepartmentName = g.Key,
+                Inpatient = g.Count(e => e.EncounterType == "inpatient"),
+                Outpatient = g.Count(e => e.EncounterType == "outpatient"),
+                ED = g.Count(e => e.EncounterType == "ed"),
+                Total = g.Count()
+            })
+            .OrderByDescending(x => x.Total)
+            .ToListAsync();
 
+        return Results.Ok(data);
+    });
+app.Run();
 app.Run();
