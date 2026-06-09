@@ -17,8 +17,8 @@ while (true)
     Console.WriteLine("4. Eager Loading Demo");
     Console.WriteLine("5. Explicit Loading Demo");
     Console.WriteLine("6. AsNoTracking Demo");
-    Console.WriteLine("7. Exit");
-
+    Console.WriteLine("7. Revenue At Risk Dashboard");
+    Console.WriteLine("8. Exit");
     Console.WriteLine();
     Console.Write("Choose Option: ");
 
@@ -51,6 +51,10 @@ while (true)
             break;
 
         case "7":
+            RevenueAtRiskDashboard();
+            break;
+
+        case "8":
             return;
 
         default:
@@ -426,4 +430,47 @@ static void AsNoTrackingDemo()
 
     Console.WriteLine(
         "Lower Memory Usage");
+}
+static void RevenueAtRiskDashboard()
+{
+    using var db = new CareBridgeContext();
+    Console.WriteLine();
+    Console.WriteLine("REVENUE AT RISK DASHBOARD");
+    Console.WriteLine("----------------------------");
+    Stopwatch stopwatch = Stopwatch.StartNew();
+    long memoryBefore =
+            GC.GetTotalMemory(true);
+    var claimStatusDistribution = db.Claims
+        .AsNoTracking()
+        .GroupBy(c => c.Status)
+        .Select(g => new {
+        Status = g.Key,
+        Cnt = g.Count(),
+        Billed = g.Sum(c => c.BilledAmount),
+        Reimbursed = g.Sum(c => c.ReimbursedAmt),
+        Gap = g.Sum(c => c.BilledAmount - (c.ReimbursedAmt==null ? 0: c.ReimbursedAmt))
+    })
+    .OrderByDescending(x => x.Cnt)
+    .ToList();
+
+    var revenueAtRisk = db.Claims
+        .Where(c => c.Status != "Paid")
+        .Sum(c => c.BilledAmount);
+    long memoryAfter =
+            GC.GetTotalMemory(false);
+    stopwatch.Stop();
+    long noTrackingMemoryConsumed =
+            memoryAfter - memoryBefore;
+    Console.WriteLine("REVENUE-AT-RISK DASHBOARD");
+    Console.WriteLine("-----------------------------------");
+    Console.WriteLine("Status\tClaims\tBilled\tReimbursed\tGap");
+    foreach(var c in claimStatusDistribution)
+    {
+        Console.WriteLine($"{c.Status}\t{c.Cnt}\t{c.Billed}\t{c.Reimbursed}\t{c.Gap}");
+    }
+    Console.WriteLine("------------------------------------------------------------");
+    Console.WriteLine($"REVENUE AT RISK (not Paid) : {revenueAtRisk}");
+    Console.WriteLine($"Tracked Entities           : {db.ChangeTracker.Entries().Count()}");
+    Console.WriteLine("SQL Statements (Profiler)  : 2"); 
+    Console.WriteLine($"Elapsed Time               : {stopwatch.ElapsedMilliseconds} ms");
 }
